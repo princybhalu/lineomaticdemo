@@ -10,9 +10,10 @@ export default function CardLayout({
   return (
     <div className="flex m-3 gap-3">
       {position === "left" && (
-        // <div className="max-w-[30px] border border-[#85B0BF] border-r-0">
-             <div className="max-w-[30px] bg-teal-900/95 p-6 relative border-red-500/80 [clip-path:polygon(0_0,0_20px,20px_0,100%_0,100%_100%,0_100%)] h-full"></div>
-        // </div>
+        <div className="custom-shape topleft w-[30px] border-r-0 border-red-500">
+          <div className="border-span topleft h-[1/2] w-[20px] bg-blue-500">
+          </div>
+        </div>
       )}
 
       <div
