@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import AudioReactiveParticles from "../compnent/avatar";
 import CardLayout from "../compnent/CardLayout";
 import "../style/card.css";
@@ -29,6 +30,40 @@ import "../style/card.css";
 // }
 
 export default function GridLayout() {
+
+  const cardRef = useRef(null);
+  const [cardHeight, setCardHeight] = useState(0);
+
+  useEffect(() => {
+    // Update card height when the component mounts
+    if (cardRef.current) {
+      setCardHeight(cardRef.current.offsetHeight);
+    }
+
+    // Update card height on window resize
+    const handleResize = () => {
+      if (cardRef.current) {
+        setCardHeight(cardRef.current.offsetHeight);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  // Dynamic clip-path based on the card height
+  const customClipPath = `polygon(0px 0px, 30% 6%, 30% 95%, 0px 100%)`;
+  const customClipPathTwo = `polygon(70% 5%, 100% 0%, 100% 100%, 68% 94%)`;
+
+  const leftDivTop = `{cardHeight * 0.40}px`; // 40% of card height
+  const rightDivTop = `${cardHeight * 0.10}px`; // 10% of card height
+
+  console.log(cardHeight, "cardHeight");
+
+  const position = 'left'
+
   return (
     <div className="mx-auto p-4 w-screen h-screen">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -39,14 +74,48 @@ export default function GridLayout() {
             <AudioReactiveParticles />
           </div>
 
+
+
           {/* Square */}
           <div className="aspect-square flex items-center justify-center text-white w-full h-1/3">
             {/* <CardLayout position="left" /> */}
             <div className="custom-shape all p-1">
-              <span className="timeline"></span>
-              <div className="border-span all">
+
+              <div className="border-span all" ref={cardRef}>
+                {/* Parth  */}
+
+                <div className="bg-[#1D3D4C] text-[#00D4FF] flex p-1 w-full custom-clip-top-right-left">
+                  <div
+                    className={`bg-[#294D5F] min-h-[90%] w-3  ${position === "right" ? "mr-1 ml-1 order-2" : "ml-5 mr-1"
+                      }`}
+                  ></div>
+                  <div
+                    className={`bg-[#294D5F] min-h-[90%] w-2  ${position === "right" ? "mr-1 ml-1 order-1  " : "ml-1 mr-1"
+                      }`}
+                  ></div>
+                  <h3
+                    className={`uppercase text-xl ml-2 tracking-wide font-semibold w-100 ${position === "left" ? "text-left" : "text-right"
+                      }`}
+                  >
+                    {"cardTitle"}
+                  </h3>
+                </div>
+                <span className="absolute top-0 left-[25px] h-full  w-[5px] bg-black z-10"></span>
+
+
+
+
                 {/* Profile section */}
                 <div className="ml-6 p-8">
+                  {/* left */}
+                  <div
+                    className="absolute left-0 w-10 bg-[#78a2b4] shadow-lg hover:bg-[#5f8e9f] transition-colors duration-300"
+                    style={{
+                      height: `${cardHeight * 0.40}px`, // Dynamically set height
+                      top: leftDivTop, // Dynamically set top position
+                      clipPath: customClipPath, // Dynamically calculated clip-path
+                    }}
+                  ></div>
                   <h3 className="text-cyan-400 text-xl mb-6">PROFILE</h3>
 
                   <div className="flex gap-8 items-start">

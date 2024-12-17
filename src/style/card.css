@@ -66,3 +66,8 @@
   .border-span.bottomleft {
     clip-path: polygon(9% 0, 100% 0, 100% 14%, 100% 100%, 90% 100%, 10% 100%, 0 85%, 0 0);
   }
+
+  .custom-clip-top-right-left {
+    /* clip-path: polygon(3% 0, 97% 0, 100% 3%, 100% 100%, 0 100%, 0 3%); */
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 10px, 10px 0);
+  }
