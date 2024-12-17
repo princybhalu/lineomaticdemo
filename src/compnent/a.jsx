@@ -5,11 +5,6 @@ export default function ProfileCard({
   }) {
     return (
       <div className="w-full max-w-2xl p-[1px] bg-gradient-to-r from-gray-900/30 to-gray-900/20 relative">
-        {/* The card's border with clipped bottom-left corner */}
-        <div className="absolute inset-0 border-8 border-red-500/80 
-          [clip-path:polygon(0_0,0_20px,20px_0,100%_0,100%_100%,0_100%)]">
-        </div>
-  
         {/* The main content with clipped bottom-left corner */}
         <div className="bg-teal-900/95 p-6 relative 
           [clip-path:polygon(0_0,0_20px,20px_0,100%_0,100%_100%,0_100%)]">
