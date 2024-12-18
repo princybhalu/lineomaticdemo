@@ -40,8 +40,8 @@ export default function CardLayout({
   console.log(cardHeight, "cardHeight");
 
   return (
-    <div className="custom-shape all p-1 "ref={cardRef}>
-
+    <div className="custom-shape all p-1   "ref={cardRef}>
+      <span className={`absolute ${position === "left" ? "left-[25px]" : "right-[25px]"} top-0  h-full  w-[5px] bg-black z-10`}></span>
     <div className="border-span all" >
       <div className={`bg-[#1D3D4C] text-[#00D4FF] flex p-1 w-full ${position === "right" ? "justify-end" : ""
             } custom-clip-top-right-left`}>

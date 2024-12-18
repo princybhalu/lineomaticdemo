@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import AudioReactiveParticles from "../compnent/avatar";
+import AudioReactiveParticles from "../compnent/a3";
 import CardLayout from "../compnent/CardLayout";
 import "../style/card.css";
-
+import ProfileCard from "../compnent/a";
 
 
     
@@ -40,62 +40,16 @@ const ButtonComponent = ({ label, onClick }) => (
 const componentsConfig = [
   {
     isLayout: true,
-    comp: CardComponent,
+    comp: ProfileCard,
     compProps: {
-      title: "Card One",
+      title: "PROFILE",
       description: "This is the first card.",
-    },
-  },
-  {
-    isLayout: false, // This will not render
-    comp: CardComponent,
-    compProps: {
-      title: "Card Two",
-      description: "This card will not show because isLayout is false.",
-    },
-  },
-  {
-    isLayout: true,
-    comp: ButtonComponent,
-    compProps: {
-      label: "Click Me",
-      onClick: () => alert("Button clicked!"),
     },
   },
 ];
 
-// export default function GridLayout() {
-//   return (
-//     <div className="mx-auto p-4 container">
-//       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-//         {/* Left column */}
-//         <div className="space-y-2">
-//           {/* Circle */}
-//           <div className="h-1/2 w-full flex items-center justify-center text-white w-full mx-auto">
-//             <AudioReactiveParticles />
-//           </div>
-
-//           {/* Square */}
-//           <div className="flex items-center justify-center text-white w-full h-1/3 mx-auto">
-//               <CardLayout position="left" />
-//           </div>
-//         </div>
-
-//         {/* Right column - Rectangle */}
-//         <div className="bg-gray-700 h-screen flex items-center justify-center text-white">
-//           information about anything else
-//         </div>
-//       </div>
-//     </div>
-//   )
-// }
 
 export default function GridLayout() {
-
-  
-
-
-  
 
   return (
     <div className="mx-auto p-4 w-screen h-screen">
@@ -110,7 +64,7 @@ export default function GridLayout() {
           {/* Square */}
           <div className="aspect-square flex items-center justify-center text-white w-full h-1/3">
             {/* <CardLayout position="left" /> */}
-            <CardLayout cardTitle={"umesh"} position="right" componentsConfig={componentsConfig} />
+            <CardLayout cardTitle={"INTERACTIVITY"} position="left" componentsConfig={componentsConfig} />
           </div>
         </div>
 
