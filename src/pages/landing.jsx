@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import AudioReactiveParticles from "../compnent/a3";
+import AudioReactiveParticles from "../compnent/avatar";
 import CardLayout from "../compnent/CardLayout";
 import "../style/card.css";
 import ProfileCard from "../compnent/a";

@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import Landing from "../../pages/landing"
+import Landing from "../../pages/landing2"
 
 export const routes = [
   {

@@ -1,13 +1,14 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import CardFrame from "./CardFrame";
 import ProfileCard from "./a"
-import A1 from "./a1"
+import A1 from "./a1";
+import "../style/card.css"
 
 export default function CardLayout({
   position ,
-  children,
   cardTitle,
-  componentsConfig
+  componentsConfig,
+  height
 }) {
   const cardRef = useRef(null);
     const [cardHeight, setCardHeight] = useState(0);
@@ -42,7 +43,7 @@ export default function CardLayout({
   return (
     <div className="custom-shape all p-1   "ref={cardRef}>
       <span className={`absolute ${position === "left" ? "left-[25px]" : "right-[25px]"} top-0  h-full  w-[5px] bg-black z-10`}></span>
-    <div className="border-span all" >
+    <div className={`border-span all w-[${height}]`} >
       <div className={`bg-[#1D3D4C] text-[#00D4FF] flex p-1 w-full ${position === "right" ? "justify-end" : ""
             } custom-clip-top-right-left`}>
         <div
@@ -66,7 +67,7 @@ export default function CardLayout({
 
 
       {/* Profile section */}
-      <div className="ml-6 p-8">
+      <div className="ml-6 p-6">
         {/* left */}
         {position === "left" &&
         <div
@@ -85,7 +86,7 @@ export default function CardLayout({
         if (isLayout && Component) {
           return <div className="p-8 flex justify-center items-center">
             {/* Border Container */}
-            <div className="relative w-96 border border-[#85B0BF] p-6">
+            <div className="relative w-full border border-[#85B0BF] p-6">
               {/* Title - Legend-like Effect */}
               <div
                 className={`uppercase absolute top-[-10px] ${

@@ -1,12 +1,9 @@
-import React, { useRef, useMemo, useEffect, useState } from 'react'
+import React, { useRef, useMemo } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 
 function ParticleSystem() {
   const pointsRef = useRef(null)
-  const audioContextRef = useRef(null)
-  const analyserRef = useRef(null)
-  const [audioData, setAudioData] = useState(new Uint8Array(128))
   const originalPositions = useRef(null)
   
   const particles = useMemo(() => {
@@ -25,9 +22,9 @@ function ParticleSystem() {
       positions[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta)
   
       // Set color to RGB(2, 160, 224)
-      colors[i * 3] = 2 / 255 // Red
-      colors[i * 3 + 1] = 160 / 255 // Green
-      colors[i * 3 + 2] = 224 / 255 // Blue
+      colors[i * 3] = 2 / 255
+      colors[i * 3 + 1] = 160 / 255
+      colors[i * 3 + 2] = 224 / 255
   
       // Randomly assign movement type (40% particles will move)
       movementTypes[i] = Math.random() < 0.4 ? 1 : 0
@@ -36,35 +33,9 @@ function ParticleSystem() {
     originalPositions.current = positions.slice()
     return { positions, colors, particleCount, movementTypes }
   }, [])
-  
-
-  useEffect(() => {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(stream => {
-        audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)()
-        const source = audioContextRef.current.createMediaStreamSource(stream)
-        analyserRef.current = audioContextRef.current.createAnalyser()
-        analyserRef.current.fftSize = 256
-        source.connect(analyserRef.current)
-      })
-      .catch(err => console.error("Error accessing microphone:", err))
-
-    return () => {
-      if (audioContextRef.current) {
-        audioContextRef.current.close()
-      }
-    }
-  }, [])
 
   useFrame((state) => {
-    if (!pointsRef.current || !analyserRef.current) return
-
-    const dataArray = new Uint8Array(analyserRef.current.frequencyBinCount)
-    analyserRef.current.getByteFrequencyData(dataArray)
-    setAudioData(dataArray)
-
-    const average = dataArray.reduce((a, b) => a + b, 0) / dataArray.length
-    const normalizedVolume = average / 255
+    if (!pointsRef.current) return
 
     const positions = pointsRef.current.geometry.attributes.position.array
     for (let i = 0; i < particles.particleCount; i++) {
@@ -73,14 +44,14 @@ function ParticleSystem() {
       const originalZ = originalPositions.current[i * 3 + 2]
 
       if (particles.movementTypes[i] === 1) {
-        // Moving particles: Apply directional movement based on audio
-        const movement = Math.sin(state.clock.elapsedTime * 2 + i) * normalizedVolume * 0.5
-        positions[i * 3] = originalX * (1 + normalizedVolume * 0.3)
-        positions[i * 3 + 1] = originalY + movement // Add vertical movement
-        positions[i * 3 + 2] = originalZ * (1 + normalizedVolume * 0.3)
+        // Moving particles: Create a wave-like motion
+        const movement = Math.sin(state.clock.elapsedTime * 2 + i) * 0.1
+        positions[i * 3] = originalX * (1 + Math.sin(state.clock.elapsedTime) * 0.1)
+        positions[i * 3 + 1] = originalY + movement
+        positions[i * 3 + 2] = originalZ * (1 + Math.sin(state.clock.elapsedTime) * 0.1)
       } else {
-        // Stable particles: Slight pulsing effect only
-        const scale = 1 + normalizedVolume * 0.1
+        // Stable particles: Gentle breathing effect
+        const scale = 1 + Math.sin(state.clock.elapsedTime) * 0.05
         positions[i * 3] = originalX * scale
         positions[i * 3 + 1] = originalY * scale
         positions[i * 3 + 2] = originalZ * scale
@@ -121,12 +92,11 @@ function ParticleSystem() {
   )
 }
 
-export default function AudioReactiveParticles() {
+export default function LoadingParticles() {
   return (
-      <Canvas camera={{ position: [0, 0, 2] }}>
-        <ambientLight intensity={0.5} />
-        <ParticleSystem />
-      </Canvas>
+    <Canvas camera={{ position: [0, 0, 2] }}>
+      <ambientLight intensity={0.5} />
+      <ParticleSystem />
+    </Canvas>
   )
 }
-
