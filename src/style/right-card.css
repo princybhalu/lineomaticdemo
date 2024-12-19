@@ -1,0 +1,61 @@
+.right-card-container {
+    height: 285px;
+    width: 600px;
+    position: relative;
+    --mask: radial-gradient(
+        300px at -20% 96%,
+        #0000 calc(99% - 2px),
+        #000 calc(100% - 2px) 98%,
+        #0000
+      ),
+      conic-gradient(from 271deg at 94% 0px, #0000 25%, #000 0) 2px 0 /
+        100% calc(100% - 285px + 2px) repeat-x,
+      conic-gradient(at top 2px right 2px, #0000 25%, #000 0) 100% 0 /
+        calc(100% - 598px + 2px) 100% repeat-y;
+  }
+  .right-card-container:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #85b0bf;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
+  
+  .inner-right-card-box {
+    height: 207px;
+    width: 656px;
+    position: relative;
+    --mask: radial-gradient(
+        279px at 0% 100%,
+        #0000 calc(99% - 3px),
+        #000 calc(100% - 4px) 93%,
+        #0000
+      ),
+      conic-gradient(from 270deg at 93% 3px, #0000 25%, #000 0) 3px 0 / 100%
+        calc(100% - 207px + 3px) repeat-x,
+      conic-gradient(at top 3px right 3px, #0000 25%, #000 0) 100% 0 /
+        calc(100% - 278px + 3px) 100% repeat-y;
+  }
+  
+  .inner-right-card-box:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #85b0bf;
+    -webkit-mask: var(--mask);
+    mask: var(--mask);
+  }
+  
+  .custom-clip-left-right {
+    width: 100%;
+    height: 25px;
+    background-color: #1d3d4c;
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        calc(100% - 0px) 96%,
+        0 calc(100% - 0px)
+      )
+    
+  }

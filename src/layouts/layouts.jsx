@@ -26,6 +26,9 @@ const Layout = ({ children }) => {
           window.location.pathname === '/' ||
           window.location.pathname === '/profiling'
          
+        )&&(
+          window.location.pathname === '/' ||
+          window.location.pathname === '/dashboard'
         )}
 
         {/* Children Content */}

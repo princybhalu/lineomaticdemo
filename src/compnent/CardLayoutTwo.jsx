@@ -7,7 +7,8 @@ export default function CardLayout({
   position ,
   children,
   cardTitle,
-  componentsConfig
+  componentsConfig,
+  className
 }) {
   const cardRef = useRef(null);
     const [cardHeight, setCardHeight] = useState(0);
@@ -42,7 +43,7 @@ export default function CardLayout({
   return (
     <div className="custom-shape all p-1"ref={cardRef}>
       <span className={`absolute ${position === "left" ? "left-[25px]" : "right-[25px]"} top-0  h-full  w-[5px] bg-black z-10`}></span>
-    <div className="border-span all  h-[240px]  w-[465px]" >
+    <div className={`border-span all  ${className}`} >
       <div className={`bg-[#1D3D4C] text-[#00D4FF] flex p-1 w-full ${position === "right" ? "justify-end" : ""
             } custom-clip-top-right-left`}>
         <div
@@ -54,7 +55,7 @@ export default function CardLayout({
             }`}
         ></div>
         <h3
-          className={`uppercase text-xl ml-2 tracking-wide font-semibold w-100 ${position === "left" ? "text-left" : "text-right"
+          className={`uppercase text-sm ml-2 tracking-wide font-semibold w-100 ${position === "left" ? "text-left" : "text-right"
             }`}
         >
           {cardTitle}
