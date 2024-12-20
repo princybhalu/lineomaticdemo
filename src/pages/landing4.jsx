@@ -155,7 +155,6 @@ const LandingSection = () => {
     }
   }, [userData]);
 
-  
   useEffect(() => {
     if (tiggers === TIGGERSKEYS.dept_introduction) {
       setIsCardVisible(true);
@@ -166,8 +165,12 @@ const LandingSection = () => {
 
   return (
     <>
-      <div className="fixed inset-0 flex">
-        <div className="w-full h-full flex flex-col justify-center items-center z-3 overflow-hidden bg-black">
+      <div className="fixed inset-0 flex bg-black">
+        <div className="w-full h-full flex flex-col justify-center items-center overflow-hidden bg-black"
+        style={{
+          backgroundColor: "black",
+          zIndex: "10"
+        }}>
           <div className="h-1/2 w-3/4 z-3">
             <AvatraMainagement
               state={avatarState}
@@ -202,13 +205,15 @@ const LandingSection = () => {
         </div>
         {tiggers == TIGGERSKEYS.dept_introduction && (
           <>
-          <div
-            className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
-              isCardVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}
-          >
-            <GradientBorderCard content={content} />
-          </div>
+            <div
+              className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
+                isCardVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+              }`}
+            >
+              <GradientBorderCard content={content} />
+            </div>
           </>
         )}
       </div>
