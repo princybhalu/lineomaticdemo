@@ -70,17 +70,93 @@ body{
     background-size: 70px 70px;
     border-radius: 14px;
   }
-  
   .radial-blur-overlay {
     position: absolute;
-    width: 1000px;
-    height: 1000px;
-    left: -450px;  /* Position to bottom left */
-    bottom: -450px;
-    background: radial-gradient(circle at center, #4890AB85 0%, rgba(72, 144, 171, 0) 90%);
-    opacity: 0.40;
-    backdrop-filter: blur(248.4px);
+    width: 55%; /* Increase width to extend the blur effect */
+    height: 55%; /* Increase height to extend the blur effect */
+    top: 0; /* Move to the top-left corner */
+    left: 0; /* Move to the top-left corner */
+    background: radial-gradient(
+      circle at top left, /* Start the gradient from top-left */
+      rgba(72, 144, 171, 0.85) 0%, /* Bright color at the center */
+      rgba(72, 144, 171, 0.3) 45%, /* Fade out as it spreads */
+      rgba(72, 144, 171, 0) 70% /* Transparent at the outer edge */
+    );
+    opacity: 0.6;
+    backdrop-filter: blur(150px); /* Apply the blur */
     pointer-events: none;
     z-index: 1;
+    mix-blend-mode: screen;
+  }/* Radial Blur Overlay at Bottom-Left Corner with #682184 */
+/* Radial Blur Overlay at Bottom-Left Corner with #682184 */
+.radial-blur-overlay-bottom-left {
+  position: absolute;
+  width: 25vw;  /* 33% of the viewport width */
+  height: 25vh; /* 33% of the viewport height */
+  bottom: 0; /* Align to the bottom-left corner */
+  left: 0; /* Align to the bottom-left corner */
+  background: radial-gradient(
+    circle at bottom left, /* Start the gradient from bottom-left */
+    rgba(104, 33, 132, 0.85) 0%, /* Color #682184 */
+    rgba(104, 33, 132, 0.3) 45%, /* Fade out as it spreads */
+    rgba(104, 33, 132, 0) 70% /* Transparent at the outer edge */
+  );
+  opacity: 0.6;
+  backdrop-filter: blur(150px); /* Apply the blur */
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  transform: scale(1);  /* Optional: ensure scaling is maintained */
+}
+
+/* For extra-large screens */
+@media screen and (min-width: 1920px) {
+  .radial-blur-overlay-bottom-left {
+    width: 40vw; /* Adjust for large screens */
+    height: 40vh; /* Adjust for large screens */
   }
-  
+}
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+  .radial-blur-overlay-bottom-left {
+    width: 50vw; /* Adjust for small screens */
+    height: 50vh; /* Adjust for small screens */
+  }
+}
+/* Radial Blur Overlay from Top-Right to Bottom-Right */
+.radial-blur-overlay-top-right {
+  position: absolute;
+  width: 25vw;  /* 25% of the viewport width */
+  height: 25vh; /* 25% of the viewport height */
+  top: 0; /* Align to the top-right corner */
+  right: 0; /* Align to the top-right corner */
+  background: radial-gradient(
+    circle at top right, /* Start the gradient from top-right */
+    rgba(104, 33, 132, 0.85) 0%, /* Color #682184 */
+    rgba(104, 33, 132, 0.3) 45%, /* Fade out as it spreads */
+    rgba(104, 33, 132, 0) 70% /* Transparent at the outer edge */
+  );
+  opacity: 0.6;
+  backdrop-filter: blur(150px); /* Apply the blur */
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+  transform: scale(1);  /* Optional: ensure scaling is maintained */
+}
+
+/* For extra-large screens */
+@media screen and (min-width: 1920px) {
+  .radial-blur-overlay-top-right {
+    width: 30vw; /* Adjust for large screens */
+    height: 30vh; /* Adjust for large screens */
+  }
+}
+
+/* For smaller screens */
+@media screen and (max-width: 768px) {
+  .radial-blur-overlay-top-right {
+    width: 40vw; /* Adjust for small screens */
+    height: 40vh; /* Adjust for small screens */
+  }
+}

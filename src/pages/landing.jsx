@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import AudioReactiveParticles from "../component/l2";
+import AudioReactiveParticles from "../component/avatar";
 import CardLayout from "../component/CardLayout";
 import "../style/card.css";
 import ProfileCard from "../component/a";
 import AnimatedBackgroundWithCards from "./landing3";
-
+// import AudioReactiveParticles1 from "./AudioReactiveParticles";
     
 const CardComponent = ({ title, description }) => (
   <div
@@ -57,7 +57,7 @@ export default function GridLayout() {
         {/* Left column */}
         <div className="space-y-4">
           {/* Circle */}
-          <div className="aspect-square rounded-full flex items-center justify-center text-white w-full max-w-md mx-auto">
+          <div className="aspect-square rounded-full flex items-center justify-center text-white">
             <AudioReactiveParticles />
           </div>
 
