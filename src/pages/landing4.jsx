@@ -65,6 +65,8 @@ import VideoNameCard from '../component/video-name-card';
 import { AVATARSTATE, TIGGERSKEYS } from '../utills/constant';
 import { ElevenLabsClient } from 'elevenlabs';
 import GradientBorderCard from '../component/MainBorderCard';
+import GradientBorderCard1 from '../component/MainBorderCard1';
+import DashboardCards from '../component/dashboard-cards';
 
 const content = [
   {
@@ -211,11 +213,10 @@ const LandingSection = () => {
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
               }`}
-              style={{
-                borderLeft: "3px solid #919191"
-              }}
             >
-              <GradientBorderCard content={content} />
+              <GradientBorderCard1 >
+                <DashboardCards />
+                </GradientBorderCard1>
             </div>
           </>
         )}

@@ -230,3 +230,23 @@ body{
   } */
   
   /* For extra-large screens */
+
+
+
+  .card-content {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: transparent transparent; /* Transparent thumb and track for Firefox */
+  }
+  
+  .card-content::-webkit-scrollbar {
+    width: 1px; /* For Chrome, Safari, and Edge */
+  }
+  
+  .card-content::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Transparent scrollbar thumb */
+  }
+  
+  .card-content::-webkit-scrollbar-track {
+    background-color: transparent; /* Transparent scrollbar track */
+  }
+  
