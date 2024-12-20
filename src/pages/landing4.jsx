@@ -101,7 +101,7 @@ const LandingSection = () => {
   const [userData, setUserData] = useState(null);
   const sourceRef = useRef(null);
 
-  const [tiggers, setTiggers] = useState(TIGGERSKEYS.dept_introduction);
+  const [tiggers, setTiggers] = useState(TIGGERSKEYS.general);
   const [wholeData, setWholeData] = useState(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
 
@@ -158,7 +158,7 @@ const LandingSection = () => {
   }, [userData]);
 
   useEffect(() => {
-    if (tiggers === TIGGERSKEYS.dept_introduction) {
+    if (tiggers === TIGGERSKEYS.dept_introduction || tiggers === TIGGERSKEYS.root_map || tiggers === TIGGERSKEYS.specific_department) {``
       setIsCardVisible(true);
     } else {
       setIsCardVisible(false);
@@ -205,6 +205,7 @@ const LandingSection = () => {
             </>
           )}
         </div>
+        {/* dept_introduction  */}
         {tiggers == TIGGERSKEYS.dept_introduction && (
           <>
             <div
@@ -213,6 +214,10 @@ const LandingSection = () => {
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
               }`}
+              style={{
+                borderLeft: "3px solid #919191"
+              }}
+              
             >
               <GradientBorderCard1 >
                 <DashboardCards />
@@ -220,6 +225,48 @@ const LandingSection = () => {
             </div>
           </>
         )}
+
+        {
+          tiggers === TIGGERSKEYS.specific_department && (
+            <>
+             <div
+              className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
+                isCardVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+              }`}
+              style={{
+                borderLeft: "3px solid #919191"
+              }}
+              
+            >
+              <GradientBorderCard content={content} />
+            </div>
+            </>
+          )
+        }
+
+        {/* Root map */}
+        {
+          tiggers === TIGGERSKEYS.root_map && (
+            <>
+                <div
+              className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
+                isCardVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+              }`}
+              style={{
+                borderLeft: "3px solid #919191"
+              }}
+              
+            >
+               LOadinbknrngkbnkt
+            </div>
+            </>
+          )
+        }
+
       </div>
       
     </>
@@ -228,11 +275,3 @@ const LandingSection = () => {
 
 export default LandingSection;
 
-{
-  /* <div className="w-full h-full flex flex-col justify-center items-center p-12 relative">
-          <div className="gradient-border-card m-8">
-            <div className="radial-blur-overlay" />
-            <div className="card-content" />
-          </div>
-        </div> */
-}
