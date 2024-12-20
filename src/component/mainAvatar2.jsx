@@ -103,21 +103,16 @@ function ParticleSystem({ isLoading }) {
   )
 }
 
-export default function ParticleAvatar() {
-  const [isLoading, setIsLoading] = useState(false)
+export default function ParticleAvatar({isLoading , setIsLoading }) {
+  // const [isLoading, setIsLoading] = useState(false)
 
   return (
-    <div className="relative h-screen w-full bg-gray-950">
+    <>
+    {/* <div className="relative h-screen w-full bg-gray-950"> */}
       <Canvas camera={{ position: [0, 0, 2] }}>
         <ambientLight intensity={0.5} />
         <ParticleSystem isLoading={isLoading} />
       </Canvas>
-      <button
-        className="absolute top-4 left-4 px-4 py-2 bg-blue-500 text-white rounded"
-        onClick={() => setIsLoading(!isLoading)}
-      >
-        Toggle Animation
-      </button>
-    </div>
+    </>
   )
 }
