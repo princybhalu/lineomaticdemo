@@ -60,21 +60,20 @@
 //     );
 // }
 
-
 import React from 'react';
-import AudioReactiveParticles from "../component/avatar";
+import AudioReactiveParticles from "../component/mainAvatar2";
 
 const GradientBorderCard = () => {
   return (
-    <div className="w-screen h-screen flex relative">
+    <div className="w-screen h-screen flex">
       <div className="w-full h-full flex flex-col justify-center items-center">
-        <div className="h-1/2 w-3/4">
+        {/* <div className="h-1/2 w-3/4"> */}
           <AudioReactiveParticles />
-        </div>
+        {/* </div> */}
       </div>
-      <div className="w-full h-full flex flex-col justify-center items-center p-12 relative">
+      <div className="w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191]">
         <div className="gradient-border-card m-8">
-          <div className="radial-blur-overlay" />
+          {/* <div className="radial-blur-overlay" /> */}
           <div className="card-content" />
         </div>
       </div>
@@ -83,4 +82,5 @@ const GradientBorderCard = () => {
 };
 
 export default GradientBorderCard;
+
 
