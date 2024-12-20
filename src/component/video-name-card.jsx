@@ -4,7 +4,7 @@ function VideoNameCard() {
   return (
     <div
       className="absolute group w-[173px] text-right"
-      style={{ top: '105px', right: '-213px' }}
+      style={{ top: '150px', right: '-195px' }}
     >
       {/* Glass effect background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl backdrop-blur-sm" />

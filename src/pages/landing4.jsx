@@ -63,6 +63,23 @@ import AudioReactiveParticles from '../component/avatar';
 import CameraView from '../component/CameraView';
 import VideoNameCard from '../component/video-name-card';
 
+
+import SvgHr from '../shared/svg/svg-hr';
+import SvgAccount from '../shared/svg/svg-account';
+import SvgIt from '../shared/svg/svg-it';
+import SvgSaleMarketing from '../shared/svg/svg-sale-marketing';
+import SvgPurches from '../shared/svg/svg-purches';
+import SvgErp from '../shared/svg/svg-erp';
+import SvgCsd from '../shared/svg/svg-csd';
+import SvgAssemblyProduction from '../shared/svg/svg-assembly-production';
+import SvgStores from '../shared/svg/svg-stores';
+import SvgQualityCheck from '../shared/svg/svg-quality-check';
+import SvgDesign from '../shared/svg/svg-design';
+import SvgResearch from '../shared/svg/svg-research';
+import SvgAccountFinance from '../shared/svg/svg-account-finance';
+import SvgQa from '../shared/svg/svg-qa';
+import SvgAutomation from '../shared/svg/svg-automation';
+
 const GradientBorderCard = () => {
   return (
     <>
@@ -161,6 +178,56 @@ const GradientBorderCard = () => {
           </div>
         </div> */}
       </div>
+    
+      <div class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-3 gap-2 px-1 py-1 max-w-[800px] mt-32 ">
+        <div class="rounded-xl">
+          <SvgAccount />
+        </div>
+        <div class="rounded-xl">
+          <SvgHr />
+        </div>
+        <div class="rounded-xl">
+          <SvgIt />
+        </div>
+        <div class="rounded-xl">
+          <SvgSaleMarketing />
+        </div>
+        <div class="rounded-xl">
+          <SvgPurches />
+        </div>
+        <div class="rounded-xl">
+          <SvgErp />
+        </div>
+        <div class="rounded-xl">
+          <SvgCsd />
+        </div>
+        <div class="rounded-xl">
+          <SvgAutomation />
+        </div>
+        <div class="rounded-xl">
+          <SvgAssemblyProduction />
+        </div>
+        <div class="rounded-xl">
+          <SvgStores />
+        </div>
+        <div class="rounded-xl">
+          <SvgQualityCheck />
+        </div>
+        <div class="rounded-xl">
+          <SvgDesign />
+        </div>
+        <div class="rounded-xl">
+          <SvgResearch />
+        </div>
+        <div class="rounded-xl">
+          <SvgAccountFinance />
+        </div>
+        <div class="rounded-xl">
+          <SvgQa />
+        </div>
+      </div>
+    
+      
     </>
   );
 };
