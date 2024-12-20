@@ -20,7 +20,7 @@ This is a [link](https://github.com/remarkjs/react-markdown)
 
    <>
       {/* Right Section with Gradient Border Card */}
-      <div className="w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative">
+     
         {/* Radial Blur Overlays */}
         <div className="radial-blur-overlay" />
         <div className="radial-blur-overlay-bottom-left" />
@@ -50,7 +50,6 @@ This is a [link](https://github.com/remarkjs/react-markdown)
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 };
