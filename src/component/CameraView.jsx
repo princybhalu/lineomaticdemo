@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function CameraView() {
+export default function CameraView({}) {
   const videoRef = useRef(null);
   const [hasPermission, setHasPermission] = useState(true);
   const [apiData, setApiData] = useState(null);
@@ -73,11 +73,11 @@ export default function CameraView() {
         muted
         className="w-full h-full object-cover rounded-2xl"
       />
-      {apiData && (
+      {/* {apiData && (
         <div className="absolute top-0 left-0 bg-black bg-opacity-50 text-white p-2">
           API Data: {JSON.stringify(apiData)}
         </div>
-      )}
+      )} */}
     </div>
   );
 }
