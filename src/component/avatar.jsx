@@ -54,7 +54,9 @@ function ParticleSystem({ isSet }) {
       if (event.result.reason === sdk.ResultReason.RecognizedSpeech) {
         setTranscription((prev) => event.result.text);
         console.log(event.result.text);
-        socketRef.current.emit('query', event.result.text);
+        socketRef.current.emit('query', {
+          text: event.result.text
+        });
       } else if (event.result.reason === sdk.ResultReason.NoMatch) {
         console.log('No speech recognized.');
       }
@@ -97,7 +99,7 @@ function ParticleSystem({ isSet }) {
   // },[isSet])
 
   useEffect(() => {
-    const socket = io('http://localhost:4000');
+    const socket = io('http://localhost:5000');
     socketRef.current = socket;
     console.log(recognizerRef)
 
