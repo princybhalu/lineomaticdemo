@@ -211,6 +211,9 @@ const LandingSection = () => {
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-10'
               }`}
+              style={{
+                borderLeft: "3px solid #919191"
+              }}
             >
               <GradientBorderCard content={content} />
             </div>
