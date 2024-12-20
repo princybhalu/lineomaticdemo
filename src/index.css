@@ -206,3 +206,41 @@ body{
     height: 40vh; /* Adjust for small screens */
   }
 }
+    /* width: 150%;
+    height: 150%;
+    left: -50%;
+    bottom: -50%;
+    background: radial-gradient(
+      circle at center,
+      rgba(72, 144, 171, 0.85) 0%,
+      rgba(72, 144, 171, 0.3) 45%,
+      rgba(72, 144, 171, 0) 70%
+    );
+    opacity: 0.6;
+    backdrop-filter: blur(150px);
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+  } */
+  
+  /* For extra-large screens */
+
+
+
+  .card-content {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: transparent transparent; /* Transparent thumb and track for Firefox */
+  }
+  
+  .card-content::-webkit-scrollbar {
+    width: 1px; /* For Chrome, Safari, and Edge */
+  }
+  
+  .card-content::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Transparent scrollbar thumb */
+  }
+  
+  .card-content::-webkit-scrollbar-track {
+    background-color: transparent; /* Transparent scrollbar track */
+  }
+  

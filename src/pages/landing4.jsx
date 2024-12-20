@@ -65,6 +65,8 @@ import VideoNameCard from '../component/video-name-card';
 import { AVATARSTATE, TIGGERSKEYS } from '../utills/constant';
 import { ElevenLabsClient } from 'elevenlabs';
 import GradientBorderCard from '../component/MainBorderCard';
+import GradientBorderCard1 from '../component/MainBorderCard1';
+import DashboardCards from '../component/dashboard-cards';
 
 const content = [
   {
@@ -217,7 +219,9 @@ const LandingSection = () => {
               }}
               
             >
-              <GradientBorderCard content={content} />
+              <GradientBorderCard1 >
+                <DashboardCards />
+                </GradientBorderCard1>
             </div>
           </>
         )}
