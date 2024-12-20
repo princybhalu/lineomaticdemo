@@ -62,14 +62,46 @@ import React, { useEffect, useRef, useState } from 'react';
 import AvatraMainagement from '../component/AvatraMainagement';
 import CameraView from '../component/CameraView';
 import VideoNameCard from '../component/video-name-card';
-import { AVATARSTATE } from '../utills/constant';
+import { AVATARSTATE , TIGGERSKEYS } from '../utills/constant';
 import { ElevenLabsClient } from 'elevenlabs';
+import GradientBorderCard from "../component/MainBorderCard";
 
-const GradientBorderCard = () => {
+const content = [
+  {
+    text: `
+# Welcome to the Future
+Explore *innovation* and creativity like never before!
+  `,
+  },
+  {
+    text: `
+## Empower Your Ideas
+With *tools* designed for creators, your vision becomes reality.
+  `,
+  },
+  {
+    text: `
+### Technology Meets Imagination
+Let technology drive your *success*.
+  `,
+  },
+  {
+    text: `
+#### Start Your Journey
+Begin today and *see what’s possible*.
+  `,
+  },
+];
+
+const LandingSection = () => {
   const [avatarState, setAvatarState] = useState(AVATARSTATE.NORMAL);
-  const [isCameraOpen, setIsCameraOpen] = useState(true);
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const sourceRef = useRef(null);
+
+  const [tiggers , setTiggers] = useState(TIGGERSKEYS.intro);
+  const [wholeData , setWholeData] = useState(null);
+
 
   console.log({ userData });
 
@@ -126,9 +158,9 @@ const GradientBorderCard = () => {
   return (
     <>
       <div className="w-screen h-screen flex relative rounded-3xl">
-        <div className="w-full h-full flex flex-col justify-center items-center">
-          <div className="h-1/2 w-3/4">
-            <AvatraMainagement state={avatarState} isLoading={false} />
+        <div className="w-full h-full flex flex-col justify-center items-center z-3 overflow-hidden bg-black">
+          <div className="h-1/2 w-3/4 z-3">
+            <AvatraMainagement state={avatarState} isLoading={false}  setTiggers={setTiggers} setWholeData={setWholeData} />
           </div>
           {isCameraOpen && (
             <>
@@ -229,15 +261,21 @@ const GradientBorderCard = () => {
             </>
           )}
         </div>
-        {/* <div className="w-full h-full flex flex-col justify-center items-center p-12 relative">
-          <div className="gradient-border-card m-8">
-            <div className="radial-blur-overlay" />
-            <div className="card-content" />
-          </div>
-        </div> */}
+        {
+          tiggers == TIGGERSKEYS.intro && <>
+          <GradientBorderCard content={content} />
+          </>
+        }
       </div>
     </>
   );
 };
 
-export default GradientBorderCard;
+export default LandingSection;
+
+ {/* <div className="w-full h-full flex flex-col justify-center items-center p-12 relative">
+          <div className="gradient-border-card m-8">
+            <div className="radial-blur-overlay" />
+            <div className="card-content" />
+          </div>
+        </div> */}
