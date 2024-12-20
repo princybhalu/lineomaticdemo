@@ -95,12 +95,15 @@ const GradientBorderCard = () => {
                       }}
                     />
                     {/* Rotated line */}
-                    <div
+                    {/* <div
                       className="absolute h-[2px] w-[65px] bg-white origin-left rotate-[120deg] drop-shadow-2xl"
                       style={{
-                        animation: 'drawLine 1s linear 0.5s forwards',
+                        animation: 'drawLineAndStay 1s linear 0.5s forwards',
                       }}
-                    />
+                    /> */}
+                     <div className="absolute h-[2px] w-[65px] bg-white origin-left rotate-[120deg] drop-shadow-2xl animate-draw-line-delayed" />
+                  
+
                     {/* Circle group */}
                     <div
                       className="absolute -translate-x-1/2 -translate-y-1/2"
@@ -124,13 +127,27 @@ const GradientBorderCard = () => {
                   {/* Add Keyframe Animations */}
                   <style jsx>{`
                     @keyframes drawLine {
-                      from {
+                      0% {
                         transform: scaleX(0);
+                        opacity: 0;
                       }
-                      to {
+                      100% {
                         transform: scaleX(1);
+                        opacity: 1;
                       }
                     }
+
+                    @keyframes drawLineAndStay {
+                      0% {
+                        transform: scaleX(0) rotate(120deg);
+                        opacity: 0;
+                      }
+                      100% {
+                        transform: scaleX(1) rotate(120deg);
+                        opacity: 1;
+                      }
+                    }
+                    
                     @keyframes fadeInCircle {
                       from {
                         opacity: 0;
