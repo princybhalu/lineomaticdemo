@@ -158,12 +158,14 @@ const LandingSection = () => {
   }, [userData]);
 
   useEffect(() => {
-    if (tiggers === TIGGERSKEYS.dept_introduction || tiggers === TIGGERSKEYS.root_map || tiggers === TIGGERSKEYS.specific_department) {``
+    if (tiggers === TIGGERSKEYS.dept_introduction || tiggers === TIGGERSKEYS.root_map || tiggers === TIGGERSKEYS.specific_department) {
       setIsCardVisible(true);
     } else {
       setIsCardVisible(false);
     }
   }, [tiggers]);
+
+  
 
   return (
     <>
