@@ -30,7 +30,7 @@
 'use client'
 
 import React, { useState } from 'react';
-import AudioReactiveParticles from '../component/avatar';
+import AudioReactiveParticles from '../component/l3';
 import ProfileCard from '../component/welcomeCard';
 import CameraCard from "../component/a";
 import CardLayout from "../component/CardLayout";

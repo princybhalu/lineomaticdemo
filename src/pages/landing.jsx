@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
-import AudioReactiveParticles from "../compnent/avatar";
-import CardLayout from "../compnent/CardLayout";
+import AudioReactiveParticles from "../component/l2";
+import CardLayout from "../component/CardLayout";
 import "../style/card.css";
-import ProfileCard from "../compnent/a";
-
+import ProfileCard from "../component/a";
+import AnimatedBackgroundWithCards from "./landing3";
 
     
 const CardComponent = ({ title, description }) => (
@@ -62,16 +62,23 @@ export default function GridLayout() {
           </div>
 
           {/* Square */}
-          <div className="aspect-square flex items-center justify-center text-white w-full h-1/3">
+          <div className="aspect-square flex items-center justify-center text-white w-full h-1/3" 
+          style={{
+            border: "4px solid",
+
+            borderImageSource: "linear-gradient(131.72deg, #00AEEF 1.01%, rgba(0, 174, 239, 0) 49.54%, #00AEEF 98.07%)"
+            
+          }}>
             {/* <CardLayout position="left" /> */}
-            <CardLayout cardTitle={"INTERACTIVITY"} position="left" componentsConfig={componentsConfig} />
+            {/* <CardLayout cardTitle={"INTERACTIVITY"} position="left" componentsConfig={componentsConfig} /> */}
+            {/* <AnimatedBackgroundWithCards /> */}
           </div>
         </div>
 
         {/* Right column - Rectangle */}
-        <div className="min-h-[600px] flex items-center justify-center text-white">
-          information about anything else
-        </div>
+        {/* <div className="flex items-center justify-center text-white">
+         <AnimatedBackgroundWithCards />
+        </div> */}
       </div>
     </div>
   )
