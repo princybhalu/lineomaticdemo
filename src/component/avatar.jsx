@@ -1,12 +1,18 @@
 import { ElevenLabsClient } from 'elevenlabs';
-import React, { useRef, useMemo, useEffect, useState } from 'react';
+import React, { useRef, useMemo, useEffect, useState , useContext } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import * as sdk from 'microsoft-cognitiveservices-speech-sdk';
 import { io } from 'socket.io-client';
 import { useConversation } from '@11labs/react';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import {ThemeContext} from "../pages/landing4";
+import {STATEOFSPEAK} from "../utills/constant";
 
+let newLine = "" ;
+let isFirstChunk = true;
 function ParticleSystem({ isSet }) {
+  const { setStopAudio , currentStateOfSpeech , setCurrentStateOfSpeech , setCurrentPlayString } = useContext(ThemeContext);
   const pointsRef = useRef(null);
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
@@ -43,6 +49,7 @@ function ParticleSystem({ isSet }) {
 
     recognizer.recognizing = (sender, event) => {
       if (sourceRef.current) {
+        // setStopAudio(c => c + 1);
         sourceRef.current.stop();
         sourceRef.current = null;
       }
@@ -54,8 +61,9 @@ function ParticleSystem({ isSet }) {
       if (event.result.reason === sdk.ResultReason.RecognizedSpeech) {
         setTranscription((prev) => event.result.text);
         console.log(event.result.text);
-        socketRef.current.emit('query', {
-          text: event.result.text
+        if(currentStateOfSpeech === STATEOFSPEAK.SPEAK) setStopAudio(c => c + 1);
+        socketRef.current.emit('generate', {
+          prompt: event.result.text
         });
       } else if (event.result.reason === sdk.ResultReason.NoMatch) {
         console.log('No speech recognized.');
@@ -86,38 +94,40 @@ function ParticleSystem({ isSet }) {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(isSet , ":  isSets" )
-  //   if (isSet && recognizerRef.current){
-  //     recognizerRef.current.startContinuousRecognitionAsync();
-  //   } else if (!isSet && recognizerRef.current) {
-  //     recognizerRef.current.stopContinuousRecognitionAsync(() => {
-  //       recognizerRef.current.close();
-  //       recognizerRef.current = null;
-  //     });
-  //   }
-  // },[isSet])
-
   useEffect(() => {
-    const socket = io('http://localhost:5000');
+    const socket = io('http://192.168.178.19:8080');
     socketRef.current = socket;
-    console.log(recognizerRef)
-
-    if (!recognizerRef.current) {
-      startContinuousSpeechToText();
-    }
+    console.log(recognizerRef);
 
 
     socket.on('connect', () => {
+
+      if (!recognizerRef.current) {
+        startContinuousSpeechToText();
+      }
+
       console.log('Connected to server');
     });
 
     socket.on('disconnect', () => {
       console.log('Disconnected from server');
-    });
 
+    });
+    
     socket.on('response', (data) => {
-      console.log(data);
+      if(isFirstChunk){
+        isFirstChunk = false;
+        return;
+      }
+      
+      // add logic of spilt :
+      if(data.chunk.split("।").length > 1){
+        newLine += data.chunk.split("।")[0].trim();
+        setCurrentPlayString(newLine);
+        newLine = data.chunk.split("।")[1];
+      }else{
+        newLine += data.chunk.split("।")[0].trim() + " " ;
+      }
     })
 
     return () => {
@@ -148,6 +158,7 @@ function ParticleSystem({ isSet }) {
 
   //         if (averageVolume > 11 && sourceRef.current) {
   //           // sourceRef.current.stop();
+  //           // setStopAudio(c => c + 1);
   //         }
   //       };
 

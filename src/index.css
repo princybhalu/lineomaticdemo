@@ -243,4 +243,67 @@ body{
   .card-content::-webkit-scrollbar-track {
     background-color: transparent; /* Transparent scrollbar track */
   }
-  
+
+
+
+  /* video card position  */
+
+/* .video-card-position {
+  right: -45%;
+  top: 8%;
+}
+
+@media (min-width: 768px) {
+  .video-card-position {
+    right: -57%;
+    top: 8%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .video-card-position {
+    /* right: -55%; */
+    /* right: -45%;
+
+    top: 8%;
+  }
+} */
+
+/* @media (min-width: 1200px) {
+  .video-card-position {
+    right: -45%;
+    top: 8%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .video-card-position {
+    /* right: -43%; */
+    /* right: -35%;
+
+    top: 8%;
+  }
+}
+
+@media (min-width: 1700px) {
+  .video-card-position {
+    right: -36%;
+    top: 8%;
+  }
+}
+
+@media (min-width: 2000px) {
+  .video-card-position { */
+    /* right: -25%; */
+    /* right: -20%;
+
+    top: 8%;
+  }
+}
+
+@media (min-width: 2800px) {
+  .video-card-position {
+    right: -20%;
+    top: 8%;
+  }
+} */ 

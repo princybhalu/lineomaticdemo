@@ -1,17 +1,26 @@
 import React from 'react';
 
-function VideoNameCard({ userData }) {
+function VideoNameCard({ userData,width }) {
   return (
-    <div
-      className="absolute group w-[10vh] text-right 
-        lg:top-[10vh] lg:right-[-12vh] 
-      "
-    >
+    // <div
+    //   className="absolute group w-[10vh] text-right 
+    //     lg:top-[10%] lg:right-[-12%] 
+    //   "
+    // >
+    // <div className="absolute group text-right top-[0] z-20 video-card-position">
+    <div className={"absolute group text-right top-[0] z-20 video-card-position"}
+    style={{
+      left: `${Math.ceil(width) + 20}px`,
+      top: "6%"
+}}
+>
+
       {/* Glass effect background with gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-gray-800/50 to-gray-900/50 rounded-2xl backdrop-blur-sm" />
 
       {/* Content container */}
-      <div className="relative p-5 rounded-2xl border border-gray-700/50">
+      {/* <div className="relative p-5 rounded-2xl border border-gray-700/50"> */}
+      <div className="relative p-2 rounded-xl border border-gray-700/50">
         {/* Name */}
         <h2 className="text-[#00BFFF] text-md lg:text-xl xl:text-2xl xl2:text-4xl font-bold mb-1">
           {userData.name}

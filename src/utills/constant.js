@@ -30,3 +30,9 @@ export const DISPLAYNAME = {
     accounts_and_finance: "Accounts and Finance",
     quality_assurance: "Quality Assurance",
 };
+
+
+export const STATEOFSPEAK = {
+    SPEAK : "speak",
+    NORMAL: "normal",
+}

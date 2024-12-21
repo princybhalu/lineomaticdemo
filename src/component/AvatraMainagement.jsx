@@ -3,7 +3,7 @@ import { AVATARSTATE } from '../utills/constant';
 import AudioReactiveParticles from '../component/avatar';
 import ParticleAvatar from "../component/mainAvatar2";
 
-export default function AvatraMainagement({ state = AVATARSTATE.NORMAL , setIsLoading = () => {} , isLoading = false }) {
+export default function AvatraMainagement({ state = AVATARSTATE.NORMAL , setIsLoading = () => {} , isLoading = false  }) {
   return (
     <>
       {state == AVATARSTATE.LISTERN && (

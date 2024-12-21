@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import Landing from "../../pages/landing2"
 import Landing4 from "../../pages/landing4"
 import ParticleAvatar from "../../component/mainAvatar1";
+import ws from "../../component/ws";
 
 export const routes = [
   {
@@ -13,6 +14,11 @@ export const routes = [
     path: '/new',
     key: 'landing',
     element: Landing4,
+  },
+  {
+    path: '/new1',
+    key: 'landing',
+    element: ws,
   },
   {
     path: '*',
