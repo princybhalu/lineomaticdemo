@@ -96,7 +96,7 @@ const data = {
 
 const DepartmentModel = ({ content }) => {
   console.log("content", content)
-  const [departmentKey, setDepartmentKey] = useState('admin')
+  const [departmentKey, setDepartmentKey] = useState('hr')
 
   const contentVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -109,13 +109,7 @@ const DepartmentModel = ({ content }) => {
 
 
   return (
-    <div className="w-screen h-screen flex ">
-      <div className="w-full h-full flex flex-col justify-center items-center z-3 overflow-hidden bg-black">
-        <div className="h-1/2 w-3/4 z-3">
-          <AudioReactiveParticles />
-        </div>
-      </div>
-      <div className="w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative">
+ <>
         <div className="radial-blur-overlay" />
         <div className="radial-blur-overlay-bottom-left" />
         <div className="radial-blur-overlay-right-center" />
@@ -152,8 +146,7 @@ const DepartmentModel = ({ content }) => {
             </div>
           </motion.div>
         </div>
-      </div>
-    </div>
+    </>
   );
 };
 

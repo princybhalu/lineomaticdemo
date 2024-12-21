@@ -349,20 +349,19 @@
 
 // export default LandingSection;
 
-import React, { useEffect, useRef, useState , createContext } from 'react';
+import React, { useEffect, useRef, useState, createContext } from 'react';
 import AvatraMainagement from '../component/AvatraMainagement';
 import CameraView from '../component/CameraView';
 import VideoNameCard from '../component/video-name-card';
-import { AVATARSTATE, TIGGERSKEYS  , STATEOFSPEAK} from '../utills/constant';
+import { AVATARSTATE, TIGGERSKEYS, STATEOFSPEAK } from '../utills/constant';
 import { ElevenLabsClient } from 'elevenlabs';
 import GradientBorderCard from '../component/DepartmentModel';
 import GradientBorderCard1 from '../component/MainBorderCard1';
 import DashboardCards from '../component/dashboard-cards';
 import { io } from 'socket.io-client';
-import WebSocketComponent from "../component/ws";
-import { motion } from 'framer-motion'
+import WebSocketComponent from '../component/ws';
+import { motion } from 'framer-motion';
 import DepartmentModel from '../component/DepartmentModel';
-
 
 const content = [
   {
@@ -464,18 +463,20 @@ const LocalRes1 = [];
 // Create the ThemeContext
 export const ThemeContext = createContext();
 
-
 const LandingSection = () => {
-  const [avatarState, setAvatarState] = useState(AVATARSTATE.NORMAL);
-  const [isCameraOpen, setIsCameraOpen] = useState(true);
+  const [avatarState, setAvatarState] = useState(AVATARSTATE.LISTERN);
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [userData, setUserData] = useState(null);
-  
+
   // ws
-  const [currentStateOfSpeech, setCurrentStateOfSpeech] = useState(STATEOFSPEAK.NORMAL);
-  const [currentPlayString , setCurrentPlayString] = useState(null);
-  const [currentCategoryOfSpeech, setCurrentCategoryOfSpeech ] =  useState("dept_intro");
-  const [stopAudio , setStopAudio] = useState(0);
- 
+  const [currentStateOfSpeech, setCurrentStateOfSpeech] = useState(
+    STATEOFSPEAK.NORMAL
+  );
+  const [currentPlayString, setCurrentPlayString] = useState(null);
+  const [currentCategoryOfSpeech, setCurrentCategoryOfSpeech] =
+    useState('dept_intro');
+  const [stopAudio, setStopAudio] = useState(0);
+
   const [tiggers, setTiggers] = useState(TIGGERSKEYS.general);
   const [wholeData, setWholeData] = useState(null);
   const [isCardVisible, setIsCardVisible] = useState(false);
@@ -483,9 +484,6 @@ const LandingSection = () => {
 
   const divRef = useRef(null);
   const [width, setWidth] = useState(0);
-
-
-
 
   // Function to get audio from Eleven Labs
   async function getAudio(text) {
@@ -546,21 +544,22 @@ const LandingSection = () => {
   }
 
   const callBackOfSpeak = (state) => {
-    if(state === "userintro"){
-      console.log("in call back 2nd")
+    if (state === 'userintro') {
+      console.log('in call back 2nd');
       setIsCameraOpen(false);
       setAvatarState(AVATARSTATE.LISTERN);
-      setCurrentCategoryOfSpeech("dept_intro");
-    }else if(state == "dept_intro"){
-      
+      setCurrentCategoryOfSpeech('dept_intro');
+    } else if (state == 'dept_intro') {
     }
-  }
+  };
 
   // Effect to handle userData and fetch audio
   useEffect(() => {
     if (userData !== null) {
-      setCurrentPlayString(`नमस्कार ${userData.name}, लाइन ओ मैटिक में आपका स्वागत है`);
-      setCurrentCategoryOfSpeech("userintro");
+      setCurrentPlayString(
+        `नमस्कार ${userData.name}, लाइन ओ मैटिक में आपका स्वागत है`
+      );
+      setCurrentCategoryOfSpeech('userintro');
       setCurrentStateOfSpeech(STATEOFSPEAK.SPEAK);
       // setTimeout(() => {
       //   setIsCameraOpen(false);
@@ -593,13 +592,12 @@ const LandingSection = () => {
         .then(async (audio) => {
           console.log('audio:', audio);
           await playAudio(audio);
-
         })
         .catch((err) => {
           console.log(err);
         });
 
-        let rejectedRes = [];
+      let rejectedRes = [];
 
       for (let i = 0; i < wholeData.department.length - 12; i++) {
         getAudio(wholeData.department[i].text)
@@ -641,15 +639,13 @@ const LandingSection = () => {
     }
   }, [playAudioKeyName]);
 
-
   // set videocard position
   useEffect(() => {
     const updateWidth = () => {
       if (divRef.current) {
         const rect = divRef.current.getBoundingClientRect();
-        console.log(rect)
+        console.log(rect);
         setWidth(rect.width);
-
       }
     };
 
@@ -670,118 +666,125 @@ const LandingSection = () => {
     };
   }, []);
 
-
-
   return (
     <>
-     <ThemeContext.Provider value={{ setStopAudio , stopAudio  , currentStateOfSpeech , setCurrentStateOfSpeech  , setCurrentPlayString }}>
-      <div className="fixed inset-0 flex bg-black">
-        <div className="w-full h-full flex flex-col justify-center items-center overflow-hidden bg-black"
-          style={{
-            backgroundColor: "black",
-            zIndex: "10"
-          }}>
-          <div className="h-1/2 w-3/4 z-3">
-            <AvatraMainagement
-              state={avatarState}
-              isLoading={false}
-              setTiggers={setTiggers}
-              setWholeData={setWholeData}
-            />
-            <WebSocketComponent text={currentPlayString} currentStateOfSpeech={currentStateOfSpeech} setCurrentStateOfSpeech={setCurrentStateOfSpeech}  callBackOfSpeak={callBackOfSpeak} currentCategoryOfSpeech={currentCategoryOfSpeech}  />
-          </div>
-          {isCameraOpen && (
-            <>
-              <div className="w-3/4 h-1/2 mx-auto flex flex-col justify-center items-center ">
-                {/* <div className="relative h-[40vh] w-[60vh] p-4"> */}
-                <div className="relative h-[85%] w-[40%] min-h-[200px] p-4">
-                  {/* <div className="h-full w-full mb-5"> */}
-                  <div className="h-full w-full">
-                    {/* <div className="gradient-border-card m-8 "> */}
-                    <div className="gradient-border-card " ref={divRef}>
-                      <div className="card-content">
-                        <CameraView
-                          userData={userData}
-                          setUserData={setUserData}
-                        />
+      <ThemeContext.Provider
+        value={{
+          setStopAudio,
+          stopAudio,
+          currentStateOfSpeech,
+          setCurrentStateOfSpeech,
+          setCurrentPlayString,
+        }}
+      >
+        <div className="fixed inset-0 flex bg-black">
+          <div
+            className="w-full h-full flex flex-col justify-center items-center overflow-hidden bg-black"
+            style={{
+              backgroundColor: 'black',
+              zIndex: '10',
+            }}
+          >
+            <div className="h-1/2 w-3/4 z-3">
+              <AvatraMainagement
+                state={avatarState}
+                isLoading={false}
+                setTiggers={setTiggers}
+                setWholeData={setWholeData}
+              />
+              <WebSocketComponent
+                text={currentPlayString}
+                currentStateOfSpeech={currentStateOfSpeech}
+                setCurrentStateOfSpeech={setCurrentStateOfSpeech}
+                callBackOfSpeak={callBackOfSpeak}
+                currentCategoryOfSpeech={currentCategoryOfSpeech}
+              />
+            </div>
+            {isCameraOpen && (
+              <>
+                <div className="w-3/4 h-1/2 mx-auto flex flex-col justify-center items-center ">
+                  {/* <div className="relative h-[40vh] w-[60vh] p-4"> */}
+                  <div className="relative h-[85%] w-[40%] min-h-[200px] p-4">
+                    {/* <div className="h-full w-full mb-5"> */}
+                    <div className="h-full w-full">
+                      {/* <div className="gradient-border-card m-8 "> */}
+                      <div className="gradient-border-card " ref={divRef}>
+                        <div className="card-content">
+                          <CameraView
+                            userData={userData}
+                            setUserData={setUserData}
+                          />
+                        </div>
                       </div>
+                      {userData !== null && (
+                        <>
+                          <VideoNameCard userData={userData} width={width} />
+                        </>
+                      )}
                     </div>
-                    {userData !== null && (
-                      <>
-                       <VideoNameCard userData={userData} width={width} />
-
-                      </>
-                    )}
                   </div>
                 </div>
+              </>
+            )}
+          </div>
+          {/* dept_introduction  */}
+          {tiggers == TIGGERSKEYS.dept_introduction && (
+            <>
+              <div
+                className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
+                  isCardVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
+                style={{
+                  borderLeft: '3px solid #919191',
+                }}
+              >
+                <GradientBorderCard1>
+                  <DashboardCards />
+                </GradientBorderCard1>
               </div>
             </>
           )}
-        </div>
-        {/* dept_introduction  */}
-        {tiggers == TIGGERSKEYS.dept_introduction && (
-          <>
-            <div
-              className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${isCardVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
-                }`}
-              style={{
-                borderLeft: "3px solid #919191"
-              }}
 
-            >
-              <GradientBorderCard1 >
-                <DashboardCards />
-              </GradientBorderCard1>
-            </div>
-          </>
-        )}
-
-        {
-          tiggers === TIGGERSKEYS.specific_department && (
+          {tiggers === TIGGERSKEYS.specific_department && (
             <>
               <motion.div
-                className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${isCardVisible
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
-                  }`}
+                className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
+                  isCardVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
                 style={{
-                  borderLeft: "3px solid #919191",
+                  borderLeft: '3px solid #919191',
                 }}
-                variants={sideContentVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-
+                initial="hidden"
+                animate="visible"
+                exit="exit"
               >
                 <DepartmentModel content={content} />
               </motion.div>
             </>
-          )
-        }
-        {/* Root map */}
-        {
-          tiggers === TIGGERSKEYS.root_map && (
+          )}
+          {/* Root map */}
+          {tiggers === TIGGERSKEYS.root_map && (
             <>
               <div
-                className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${isCardVisible
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-10'
-                  }`}
+                className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
+                  isCardVisible
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                }`}
                 style={{
-                  borderLeft: "3px solid #919191"
+                  borderLeft: '3px solid #919191',
                 }}
-
               >
                 LOadinbknrngkbnkt
               </div>
             </>
-          )
-        }
-
-      </div>
-
+          )}
+        </div>
+      </ThemeContext.Provider>
     </>
   );
 };
