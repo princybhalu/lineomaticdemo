@@ -71,28 +71,41 @@ body{
       linear-gradient(90deg, #6D6D6D40 1px, transparent 1px);
     background-size: clamp(70px, 7vw, 120px) clamp(70px, 7vw, 120px);
     border-radius: clamp(14px, 1.8vw, 22px);
-  }
+  }/* Radial Blur Overlay */
+.radial-blur-overlay {
+  position: absolute;
+  width: 55%; /* Increase width to extend the blur effect */
+  height: 55%; /* Increase height to extend the blur effect */
+  top: -300px; /* Move to the top-left corner */
+  left: -250px; /* Move to the top-left corner */
+  background: radial-gradient(
+    circle, /* Start the gradient from top-left */
+    rgba(72, 144, 171, 0.6) 0%, /* Less opaque at the center */
+    rgba(72, 144, 171, 0.1) 50%, /* Fade quicker */
+    rgba(72, 144, 171, 0) 100% /* Fully transparent at the outer edge */
+  );
+  opacity: 0.5;
+  backdrop-filter: blur(2500px); /* Apply stronger blur */
+  pointer-events: none;
+  z-index: -1;
+  mix-blend-mode: screen;
+}
+
+@media screen and (min-width: 4000px) {
   .radial-blur-overlay {
-    position: absolute;
-    width: 55%; /* Increase width to extend the blur effect */
-    height: 55%; /* Increase height to extend the blur effect */
-    top: -300px; /* Move to the top-left corner */
-    left: -250px; /* Move to the top-left corner */
-    background: radial-gradient(
-      circle, /* Start the gradient from top-left */
-      rgba(72, 144, 171, 0.85) 0%, /* Bright color at the center */
-      rgba(72, 144, 171, 0.3) 45%, /* Fade out as it spreads */
-      rgba(72, 144, 171, 0) 90% /* Transparent at the outer edge */
-    );
-    opacity: 0.5;
-    backdrop-filter: blur(200px); /* Apply the blur */
-    pointer-events: none;
-    z-index: -1;
-    mix-blend-mode: screen;
+    width: 40vw; /* Adjust for large screens */
+    height: 40vh; /* Adjust for large screens */
   }
-  
-  /* Radial Blur Overlay at Bottom-Left Corner with #682184 */
-/* Radial Blur Overlay at Bottom-Left Corner with #682184 */
+}
+
+@media screen and (max-width: 768px) {
+  .radial-blur-overlay {
+    width: 50vw; /* Adjust for small screens */
+    height: 50vh; /* Adjust for small screens */
+  }
+}
+
+/* Radial Blur Overlay at Bottom-Left Corner */
 .radial-blur-overlay-bottom-left {
   position: absolute;
   width: 25vw;  /* 33% of the viewport width */
@@ -101,65 +114,94 @@ body{
   left: 0; /* Align to the bottom-left corner */
   background: radial-gradient(
     circle at bottom left, /* Start the gradient from bottom-left */
-    rgba(104, 33, 132, 0.85) 0%, /* Color #682184 */
-    rgba(104, 33, 132, 0.3) 45%, /* Fade out as it spreads */
-    rgba(104, 33, 132, 0) 70% /* Transparent at the outer edge */
+    rgba(104, 33, 132, 0.7) 0%, /* Color #682184, less opaque at the center */
+    rgba(104, 33, 132, 0.2) 30%, /* Fade quicker */
+    rgba(104, 33, 132, 0) 100% /* Fully transparent at the outer edge */
   );
   opacity: 0.6;
-  backdrop-filter: blur(150px); /* Apply the blur */
+  backdrop-filter: blur(2000px); /* Apply blur */
   pointer-events: none;
   z-index: 1;
   mix-blend-mode: screen;
-  transform: scale(1);  /* Optional: ensure scaling is maintained */
 }
 
-/* For extra-large screens */
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 4000px) {
   .radial-blur-overlay-bottom-left {
     width: 40vw; /* Adjust for large screens */
     height: 40vh; /* Adjust for large screens */
   }
 }
 
-/* For smaller screens */
 @media screen and (max-width: 768px) {
   .radial-blur-overlay-bottom-left {
     width: 50vw; /* Adjust for small screens */
     height: 50vh; /* Adjust for small screens */
   }
 }
+
 /* Radial Blur Overlay from Top-Right to Bottom-Right */
 .radial-blur-overlay-top-right {
   position: absolute;
-  width: 25vw;  /* 25% of the viewport width */
-  height: 25vh; /* 25% of the viewport height */
+  width: 50vw;  /* 25% of the viewport width */
+  height: 50vh; /* 25% of the viewport height */
   top: 0; /* Align to the top-right corner */
   right: 0; /* Align to the top-right corner */
   background: radial-gradient(
     circle at top right, /* Start the gradient from top-right */
-    rgba(104, 33, 132, 0.85) 0%, /* Color #682184 */
-    rgba(104, 33, 132, 0.3) 45%, /* Fade out as it spreads */
-    rgba(104, 33, 132, 0) 70% /* Transparent at the outer edge */
+    rgba(104, 33, 132, 0.7) 0%, /* Color #682184, less opaque at the center */
+    rgba(104, 33, 132, 0.2) 30%, /* Fade quicker */
+    rgba(104, 33, 132, 0) 100% /* Fully transparent at the outer edge */
   );
   opacity: 0.6;
-  backdrop-filter: blur(150px); /* Apply the blur */
+  backdrop-filter: blur(2000px); /* Apply blur */
   pointer-events: none;
   z-index: 1;
   mix-blend-mode: screen;
-  transform: scale(1);  /* Optional: ensure scaling is maintained */
 }
 
-/* For extra-large screens */
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 4000px) {
   .radial-blur-overlay-top-right {
     width: 30vw; /* Adjust for large screens */
     height: 30vh; /* Adjust for large screens */
   }
 }
 
-/* For smaller screens */
 @media screen and (max-width: 768px) {
   .radial-blur-overlay-top-right {
+    width: 40vw; /* Adjust for small screens */
+    height: 40vh; /* Adjust for small screens */
+  }
+}
+
+/* Radial Blur Overlay at Bottom-Right Corner */
+.radial-blur-overlay-bottom-right {
+  position: absolute;
+  width: 50vw; /* 25% of the viewport width */
+  height: 50vh; /* 25% of the viewport height */
+  bottom: 0; /* Align to the bottom-right corner */
+  right: 0; /* Align to the bottom-right corner */
+  background: radial-gradient(
+    circle at bottom right, /* Start the gradient from bottom-right */
+    rgba(72, 144, 171, 0.6) 0%, /* Bright color at the center */
+    rgba(72, 144, 171, 0.1) 30%, /* Fade quicker */
+    rgba(72, 144, 171, 0) 100% /* Fully transparent at the outer edge */
+  );
+  opacity: 0.6;
+  backdrop-filter: blur(2000px); /* Apply blur */
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+@media screen and (min-width: 4000px) {
+  .radial-blur-overlay-bottom-right {
+    width: 30vw; /* Adjust for large screens */
+    height: 30vh; /* Adjust for large screens */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .radial-blur-overlay-bottom-right {
     width: 40vw; /* Adjust for small screens */
     height: 40vh; /* Adjust for small screens */
   }
@@ -182,23 +224,16 @@ body{
   } */
   
   /* For extra-large screens */
-  @media screen and (min-width: 1920px) {
-    .radial-blur-overlay {
-      width: 180%;
-      height: 180%;
-      left: -60%;
-      bottom: -60%;
-    }
+
+
+
+  .card-content {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: transparent transparent; /* Transparent thumb and track for Firefox */
   }
   
-  /* For smaller screens */
-  @media screen and (max-width: 768px) {
-    .radial-blur-overlay {
-      width: 200%;
-      height: 200%;
-      left: -75%;
-      bottom: -75%;
-    }
+  .card-content::-webkit-scrollbar {
+    width: 1px; /* For Chrome, Safari, and Edge */
   }
 
 
@@ -296,3 +331,25 @@ body{
   }
 }
 
+  
+  .card-content::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Transparent scrollbar thumb */
+  }
+  
+  .card-content::-webkit-scrollbar-track {
+    background-color: transparent; /* Transparent scrollbar track */
+  }
+  
+
+  /* custom text size */
+
+  .custom-text{
+    font-size:2cqh;
+    line-height: 2rem;
+  }
+
+  @media (min-width: 3200px) {
+    .custom-text {
+      line-height: 4rem;
+    }
+  }

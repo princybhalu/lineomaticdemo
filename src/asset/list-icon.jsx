@@ -1,7 +1,7 @@
 import * as React from "react";
-const List = ({color}) => (
+const ListIcon = ({color,departmentKey}) => (
     <svg width="100%" height="5vh" viewBox="0 0 44 53" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9.51351 16.64H34.4865M9.51324 20.6363H27.1084M9.51351 24.8H34.4865M9.51317 28.7963H23.7031M9.51325 33.045H29.0948M3.55405 1H40.4459C41.8565 1 43 2.37001 43 4.06V48.94C43 50.63 41.8565 52 40.4459 52H3.55405C2.14349 52 1 50.63 1 48.94V4.06C1 2.37001 2.14349 1 3.55405 1ZM4.97297 4.44648H39.027C39.6539 4.44648 40.1622 5.05538 40.1622 5.80648V47.1946C40.1622 47.9457 39.6539 48.5546 39.027 48.5546H4.97297C4.34606 48.5546 3.83784 47.9457 3.83784 47.1946V5.80648C3.83784 5.05538 4.34606 4.44648 4.97297 4.44648Z" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
     </svg>
 );
-export default List;
+export default ListIcon;
