@@ -355,11 +355,14 @@ import CameraView from '../component/CameraView';
 import VideoNameCard from '../component/video-name-card';
 import { AVATARSTATE, TIGGERSKEYS  , STATEOFSPEAK} from '../utills/constant';
 import { ElevenLabsClient } from 'elevenlabs';
-import GradientBorderCard from '../component/MainBorderCard';
+import GradientBorderCard from '../component/DepartmentModel';
 import GradientBorderCard1 from '../component/MainBorderCard1';
 import DashboardCards from '../component/dashboard-cards';
 import { io } from 'socket.io-client';
 import WebSocketComponent from "../component/ws";
+import { motion } from 'framer-motion'
+import DepartmentModel from '../component/DepartmentModel';
+
 
 const content = [
   {
@@ -482,7 +485,7 @@ const LandingSection = () => {
   const [width, setWidth] = useState(0);
 
 
-  console.log({ userData });
+
 
   // Function to get audio from Eleven Labs
   async function getAudio(text) {
@@ -673,14 +676,11 @@ const LandingSection = () => {
     <>
      <ThemeContext.Provider value={{ setStopAudio , stopAudio  , currentStateOfSpeech , setCurrentStateOfSpeech  , setCurrentPlayString }}>
       <div className="fixed inset-0 flex bg-black">
-        {/* <div
-          className="w-full h-full flex flex-col justify-center items-center overflow-hidden bg-black"
+        <div className="w-full h-full flex flex-col justify-center items-center overflow-hidden bg-black"
           style={{
-            backgroundColor: 'black',
-            zIndex: '10',
-          }}
-        > */}
-          <div className="w-full h-full flex flex-col justify-center items-center overflow-hidden  bg-black z-10">
+            backgroundColor: "black",
+            zIndex: "10"
+          }}>
           <div className="h-1/2 w-3/4 z-3">
             <AvatraMainagement
               state={avatarState}
@@ -718,58 +718,70 @@ const LandingSection = () => {
             </>
           )}
         </div>
-
-        {/* dept_introduction */}
-        {tiggers === TIGGERSKEYS.dept_introduction && (
-          <div
-            className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
-              isCardVisible
+        {/* dept_introduction  */}
+        {tiggers == TIGGERSKEYS.dept_introduction && (
+          <>
+            <div
+              className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${isCardVisible
                 ? 'opacity-100 translate-y-0'
                 : 'opacity-0 translate-y-10'
-            }`}
-            style={{
-              borderLeft: '3px solid #919191',
-            }}
-          >
-            <GradientBorderCard1>
-              <DashboardCards />
-            </GradientBorderCard1>
-          </div>
+                }`}
+              style={{
+                borderLeft: "3px solid #919191"
+              }}
+
+            >
+              <GradientBorderCard1 >
+                <DashboardCards />
+              </GradientBorderCard1>
+            </div>
+          </>
         )}
 
-        {/* Specific department */}
-        {tiggers === TIGGERSKEYS.specific_department && (
-          <div
-            className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
-              isCardVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
-            }`}
-            style={{
-              borderLeft: '3px solid #919191',
-            }}
-          >
-            <GradientBorderCard content={content} />
-          </div>
-        )}
+        {
+          tiggers === TIGGERSKEYS.specific_department && (
+            <>
+              <motion.div
+                className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${isCardVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+                  }`}
+                style={{
+                  borderLeft: "3px solid #919191",
+                }}
+                variants={sideContentVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
 
+              >
+                <DepartmentModel content={content} />
+              </motion.div>
+            </>
+          )
+        }
         {/* Root map */}
-        {tiggers === TIGGERSKEYS.root_map && (
-          <div
-            className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${
-              isCardVisible
-                ? 'opacity-100 translate-y-0'
-                : 'opacity-0 translate-y-10'
-            }`}
-            style={{
-              borderLeft: '3px solid #919191',
-            }}
-          >
-            LOadinbknrngkbnkt
-          </div>
-        )}
+        {
+          tiggers === TIGGERSKEYS.root_map && (
+            <>
+              <div
+                className={`w-full h-full flex flex-col justify-center items-center p-12 border-l border-solid border-[#919191] relative transition-all duration-700 ${isCardVisible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-10'
+                  }`}
+                style={{
+                  borderLeft: "3px solid #919191"
+                }}
+
+              >
+                LOadinbknrngkbnkt
+              </div>
+            </>
+          )
+        }
+
       </div>
-      </ThemeContext.Provider>
+
     </>
   );
 };

@@ -20,4 +20,4 @@ function Markdown({ content }) {
   );
 }
 
-export default Markdown;
+export default Markdown;

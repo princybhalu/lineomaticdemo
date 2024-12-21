@@ -52,7 +52,7 @@
   }
   
   /* For extra-large screens */
-  @media screen and (min-width: 1920px) {
+  @media screen and (min-width: 3200px) {
     .radial-blur-overlay {
       width: 250%;
       height: 250%;
