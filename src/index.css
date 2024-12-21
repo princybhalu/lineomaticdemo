@@ -93,19 +93,40 @@ body{
 
 @media screen and (min-width: 4000px) {
   .radial-blur-overlay {
-    width: 40vw; /* Adjust for large screens */
-    height: 40vh; /* Adjust for large screens */
+    position: absolute;
+    width: 55%; /* Increase width to extend the blur effect */
+    height: 55%; /* Increase height to extend the blur effect */
+    top: -300px; /* Move to the top-left corner */
+    left: -250px; /* Move to the top-left corner */
+    background: radial-gradient(
+      circle, /* Start the gradient from top-left */
+      rgba(72, 144, 171, 0.85) 0%, /* Bright color at the center */
+      rgba(72, 144, 171, 0.3) 45%, /* Fade out as it spreads */
+      rgba(72, 144, 171, 0) 90% /* Transparent at the outer edge */
+    );
+    opacity: 0.5;
+    backdrop-filter: blur(200px); /* Apply the blur */
+    pointer-events: none;
+    z-index: -1;
+    mix-blend-mode: screen;
   }
 }
-
-@media screen and (max-width: 768px) {
-  .radial-blur-overlay {
-    width: 50vw; /* Adjust for small screens */
-    height: 50vh; /* Adjust for small screens */
+  @media screen and (min-width: 3200px) {
+    .radial-blur-overlay {
+      width: 40vw; /* Adjust for large screens */
+      height: 40vh; /* Adjust for large screens */
+    }
   }
-}
-
-/* Radial Blur Overlay at Bottom-Left Corner */
+  
+  /* For smaller screens */
+  @media screen and (max-width: 768px) {
+    .radial-blur-overlay {
+      width: 50vw; /* Adjust for small screens */
+      height: 50vh; /* Adjust for small screens */
+    }
+  }
+  /* Radial Blur Overlay at Bottom-Left Corner with #682184 */
+/* Radial Blur Overlay at Bottom-Left Corner with #682184 */
 .radial-blur-overlay-bottom-left {
   position: absolute;
   width: 25vw;  /* 33% of the viewport width */
@@ -125,7 +146,8 @@ body{
   mix-blend-mode: screen;
 }
 
-@media screen and (min-width: 4000px) {
+/* For extra-large screens */
+@media screen and (min-width: 3200px) {
   .radial-blur-overlay-bottom-left {
     width: 40vw; /* Adjust for large screens */
     height: 40vh; /* Adjust for large screens */
@@ -159,7 +181,8 @@ body{
   mix-blend-mode: screen;
 }
 
-@media screen and (min-width: 4000px) {
+/* For extra-large screens */
+@media screen and (min-width: 3200px) {
   .radial-blur-overlay-top-right {
     width: 30vw; /* Adjust for large screens */
     height: 30vh; /* Adjust for large screens */
@@ -178,6 +201,11 @@ body{
   position: absolute;
   width: 50vw; /* 25% of the viewport width */
   height: 50vh; /* 25% of the viewport height */
+}
+.radial-blur-overlay-bottom-right {
+  position: absolute;
+  width: 25vw; /* 25% of the viewport width */
+  height: 25vh; /* 25% of the viewport height */
   bottom: 0; /* Align to the bottom-right corner */
   right: 0; /* Align to the bottom-right corner */
   background: radial-gradient(
@@ -193,13 +221,17 @@ body{
   mix-blend-mode: screen;
 }
 
-@media screen and (min-width: 4000px) {
+
+
+/* For extra-large screens */
+@media screen and (min-width: 1920px) {
   .radial-blur-overlay-bottom-right {
     width: 30vw; /* Adjust for large screens */
     height: 30vh; /* Adjust for large screens */
   }
 }
 
+/* For smaller screens */
 @media screen and (max-width: 768px) {
   .radial-blur-overlay-bottom-right {
     width: 40vw; /* Adjust for small screens */

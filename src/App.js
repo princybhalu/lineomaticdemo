@@ -75,16 +75,37 @@
 
 // src/App.js
 import React from 'react';
-import GradientBorderCard from './component/DepartmentModel'; // Make sure the path is correct
+import GradientBorderCard from './component/GradientBorderCard'; // Make sure the path is correct
+const content = [
+  {
+    text: `
+# Welcome to the Future
+Explore **innovation** and _creativity_ like never before!
+  `,
+  },
+  {
+    text: `
+## Empower Your Ideas
+With **tools** designed for _creators_, your vision becomes reality.
+  `,
+  },
+  {
+    text: `
+### Technology Meets Imagination
+Let _technology_ drive your **success**.
+  `,
+  },
+  {
+    text: `
+#### Start Your Journey
+Begin today and **see what’s possible**.
+  `,
+  },
+];
 
 
-
-const App = () => {
-  return (
-    <div className="App">
-      <GradientBorderCard  />
-    </div>
-  );
+function App() {
+  return <GradientBorderCard content={content} />;
 }
 
 export default App;
