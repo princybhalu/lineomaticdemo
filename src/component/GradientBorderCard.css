@@ -1,0 +1,73 @@
+/* GradientBorderCard.css */
+.gradient-border-card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: clamp(16px, 2vw, 24px);
+    background: linear-gradient(131.72deg, #00AEEF 1.01%, rgba(0, 174, 239, 0) 49.54%, #00AEEF 98.07%);
+    padding: clamp(3px, 0.3vw, 5px);
+    overflow: hidden;
+  }
+  
+  .card-content {
+    width: 100%;
+    height: 100%;
+    background-color: #0a0a0a;
+    border-radius: clamp(14px, 1.8vw, 22px);
+    position: relative;
+  }
+  
+  .card-content::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+      linear-gradient(#6D6D6D40, 1px, transparent 1px),
+      linear-gradient(90deg, #6D6D6D40 1px, transparent 1px);
+    background-size: clamp(70px, 7vw, 120px) clamp(70px, 7vw, 120px);
+    border-radius: clamp(14px, 1.8vw, 22px);
+  }
+  
+  /* Moved the radial-blur-overlay to the top-left corner */
+  .radial-blur-overlay {
+    position: absolute;
+    width: 200%; /* Increase width to extend the blur effect */
+    height: 200%; /* Increase height to extend the blur effect */
+    top: 0; /* Move to the top-left corner */
+    left: 0; /* Move to the top-left corner */
+    background: radial-gradient(
+      circle at top left, /* Start the gradient from top-left */
+      rgba(72, 144, 171, 0.85) 0%, /* Bright color at the center */
+      rgba(72, 144, 171, 0.3) 45%, /* Fade out as it spreads */
+      rgba(72, 144, 171, 0) 70% /* Transparent at the outer edge */
+    );
+    opacity: 0.6;
+    backdrop-filter: blur(150px); /* Apply the blur */
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: screen;
+  }
+  
+  /* For extra-large screens */
+  @media screen and (min-width: 1920px) {
+    .radial-blur-overlay {
+      width: 250%;
+      height: 250%;
+      top: 0;
+      left: 0;
+    }
+  }
+  
+  /* For smaller screens */
+  @media screen and (max-width: 768px) {
+    .radial-blur-overlay {
+      width: 300%;
+      height: 300%;
+      top: 0;
+      left: 0;
+    }
+  }
+  
